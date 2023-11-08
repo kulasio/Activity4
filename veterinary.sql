@@ -156,8 +156,15 @@ ADD coloumn registereddate DATE;
 ALTER TABLE invoices
 RENAME COLUMN paymentdate TO paymenttime; 
 
+
 --feat/remove-appointment-simba
 DELETE FROM appointment
 WHERE animalid = (
     SELECT animalid FROM animal WHERE name = 'Simba'
 );
+
+
+--feat/modify-lastname-dr-reyes-gonzales
+UPDATE doctors
+SET dlastname = 'Reyes-Gonzales'
+WHERE dfirstname = 'Dr. Sofia'; 
