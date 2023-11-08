@@ -9,3 +9,17 @@ create table owners (
     phone varchar(50) ,
     email varchar(100)
  );
+
+#feat/create-table-animals
+CREATE TABLE animals (
+animalid int primary key,
+name varchar(50),
+species varchar(50),
+breed varchar(50),
+dateofbirth date,
+gender varchar(10),
+color varchar(50),
+owner_id int, 
+foreign key (owner_id) references owners (owner_id)  
+);
+
