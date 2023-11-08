@@ -147,3 +147,6 @@ VALUES
     (10,10, '2023-05-20 00:00:00', 1, 'Conjunctivitis', 'Eye drops', 'Prescribed eye drops for conjunctivitis');
  
 
+--feat/add-column-registereddate
+ALTER TABLE owners
+ADD coloumn registereddate DATE; 
