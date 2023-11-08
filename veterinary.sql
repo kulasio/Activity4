@@ -23,3 +23,11 @@ owner_id int,
 foreign key (owner_id) references owners (owner_id)  
 );
 
+#feat/create-table-appointments
+create table appointments (
+appointid int  NOT NULL primary key,
+animalid int,
+appointdate date,
+reason varchar(255), 
+foreign key (animalid) references animals (animalid)
+);
