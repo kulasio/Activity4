@@ -178,10 +178,12 @@ SELECT SUM(totalamount) AS total_sales
 FROM invoices; 
 
 --feat/list-total-appoinment-owner-maria
-SELECT COUNT(*) AS total_appointments
-FROM appointments
-WHERE animalid IN (SELECT animalid FROM owners WHERE ofirstname = 'Maria');
-
+SELECT o.ofirstname AS "Owner", COUNT(app.appointid)AS "Total Appointments"
+FROM owners o
+JOIN animals a ON o.owner_id = a.owner_id
+JOIN appointments app ON a.animalid = app.animalid
+WHERE o.ofirstname = 'Maria'
+GROUP BY o.ofirstname;
 
 --feat/list-animal-w-most-appoinment
 SELECT a.animalid, a.name, COUNT(*) AS appointment_count
