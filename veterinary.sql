@@ -40,3 +40,15 @@ CREATE TABLE invoices(
 	totalamount NUMERIC(10,2),
      paymentdate TIME
     );
+
+
+--feat/create-table-doctors
+create table doctors(
+doctorid int primary key,
+dfirstname varchar(50),
+dlastname varchar(50),
+speacialty varchar(100),
+phone varchar(15),
+email varchar(100)
+);
+
