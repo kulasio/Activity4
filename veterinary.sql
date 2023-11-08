@@ -52,3 +52,15 @@ phone varchar(15),
 email varchar(100)
 );
 
+--CREATE TABLE MEDICALRECORDS
+create table medicalrecords(
+recordid int primary key,
+animalid int not null,
+foreign key (animalid) references animals (animalid),
+recorddate timestamp,
+doctorid int not null,
+foreign key (doctorid) references doctors (doctorid),
+diagnosis text,
+prescription text,
+notes text
+); 
