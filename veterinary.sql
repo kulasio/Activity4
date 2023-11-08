@@ -94,7 +94,7 @@ VALUES
     (10,'Cleo', 'Cat', 'Ragdoll', '2019-12-22', 'Female', 'Seal Point', 10);
 
     -- Insert the data
-INSERT INTO appointments (apointmentid,animalid, appointdate, reason)
+INSERT INTO appointments (appointid,animalid, appointdate, reason)
 VALUES
     (1,1, '2023-01-05', 'Annual check-up'),
     (2,2, '2023-01-10', 'Vaccination'),
@@ -120,16 +120,16 @@ VALUES
 --feat/insert-10-rows-invoices
 INSERT INTO invoices(invoiceid, appointid, totalamount, paymentdate)
 VALUES 
-(1, 1, 50.00, 09:30:00),
-(2, 2, 75.00, 14:15:00),
-(3, 3, 100.00, 11:00:00),
-(4, 4, 200.00, 13:45:00),
-(5, 5, 80.00, 10:30:00),
-(6, 6, 30.00, 15:00:00),
-(7, 7, 75.00, 09:15:00),
-(8, 8, 150.00, 16:30:00),
-(9, 9, 60.00, 14:45:00),
-(10, 10, 40.00, 11:30:00);
+(1, 1, 50.00, '09:30:00'),
+(2, 2, 75.00, '14:15:00'),
+(3, 3, 100.00, '11:00:00'),
+(4, 4, 200.00, '13:45:00'),
+(5, 5, 80.00, '10:30:00'),
+(6, 6, 30.00, '15:00:00'),
+(7, 7, 75.00, '09:15:00'),
+(8, 8, 150.00, '16:30:00'),
+(9, 9, 60.00, '14:45:00'),
+(10, 10, 40.00, '11:30:00');
 
 
 --feat/insert-10-rows-medicalrecords
@@ -146,11 +146,9 @@ VALUES
     (9,9, '2023-05-02 00:00:00', 4, 'Allergic reaction', 'Antihistamines', 'Allergic reaction due to food, prescribed antihistamines'),
     (10,10, '2023-05-20 00:00:00', 1, 'Conjunctivitis', 'Eye drops', 'Prescribed eye drops for conjunctivitis');
  
-
 --feat/add-column-registereddate
 ALTER TABLE owners
-ADD coloumn registereddate DATE; 
-
+ADD COLUMN registereddate DATE; 
 
 --feat/rename-column-paymenttime
 ALTER TABLE invoices
@@ -158,10 +156,12 @@ RENAME COLUMN paymentdate TO paymenttime;
 
 
 --feat/remove-appointment-simba
-DELETE FROM appointment
-WHERE animalid = (
-    SELECT animalid FROM animal WHERE name = 'Simba'
-);
+DELETE FROM invoices
+where appointid = 8;
+
+DELETE FROM appointments
+WHERE animalid = 8;
+
 
 
 --feat/modify-lastname-dr-reyes-gonzales
@@ -190,3 +190,6 @@ JOIN appointments ap ON a.animalid = ap.animalid
 GROUP BY a.animalid, a.name
 ORDER BY appointment_count DESC
 LIMIT 1; 
+
+
+
